@@ -83,7 +83,7 @@ function init() {
 		var ff = map.hasFeatureAtPixel(evt.pixel);
 		
 		if(ff==true){
-			openPopup();
+			//openPopup();
 		}
 	});
 }
@@ -131,3 +131,10 @@ $(document).ready(function() {
 	init();
 	addMarker(126.9700, 37.3996, '오비즈타워');
 });
+
+function move(x, y){
+	map.getView().setCenter(
+		new ol.geom.Point([x, y]).transform('EPSG:4326', 'EPSG:3857').getCoordinates()
+	);
+	map.getView().setZoom(parseInt(16));
+}

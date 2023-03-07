@@ -17,6 +17,8 @@
 	<div id="popup">
 		<div id="popup-content"></div>
 	</div>
+	</br>
+	<button id='obiz' onClick='move(126.9700, 37.3996)'>오비즈타워</button>
 </body>
 <script type="text/javascript" src="/js/map.js"></script>
 </html>
