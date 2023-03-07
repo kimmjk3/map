@@ -84,6 +84,12 @@ function init() {
 		
 		if(ff==true){
 			//openPopup();
+			var lon = evt.coordinate[0];
+			var lat = evt.coordinate[1];
+			console.log(lon);
+			console.log(lat);
+
+			move(lon, lat);
 		}
 	});
 }
@@ -96,7 +102,7 @@ function openPopup(){
 function addMarker(lon, lat, name){ //경도 위도 이름값(마커들을 구분하기위해)
 
 	// 마커 feature 설정
-	var feature = new ol.Feature({
+	var marker = new ol.Feature({
 		geometry: new ol.geom.Point(ol.proj.fromLonLat([lon, lat])), //경도 위도에 포인트 설정
 		name: name
 	});
@@ -113,7 +119,7 @@ function addMarker(lon, lat, name){ //경도 위도 이름값(마커들을 구�
 
 	// 마커 레이어에 들어갈 소스 생성
 	var markerSource = new ol.source.Vector({
-		features: [feature] //feature의 집합
+		features: [marker] //feature의 집합
 	});
 
 	// 마커 레이어 생성
