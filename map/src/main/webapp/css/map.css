@@ -11,3 +11,8 @@
 	left: -50px;
 	width:130px;
 }
+
+#vMap{
+	height: 800px; 
+	width: 100%;
+}

@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h2>OpenLayers_MAP</h2>
-	<div id="vMap" style="height: 800px; width: 100%;"></div>
+	<div id="vMap"></div>
 	
 	<!-- 지도 위에 팝업이 나타날 부분 -->
 	<div id="popup">
