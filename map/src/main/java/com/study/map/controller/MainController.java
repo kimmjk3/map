@@ -15,4 +15,9 @@ public class MainController {
     public String map() {
         return "/map";
     }
+    
+    @GetMapping("/map-popup")
+    public String mapPopup() {
+        return "/map-popup";
+    }
 }

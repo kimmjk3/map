@@ -77,6 +77,19 @@ function init() {
         	content1.innerHTML = '';
     	}
 	});
+	
+	map.on('singleclick', function(evt){
+		
+		var ff = map.hasFeatureAtPixel(evt.pixel);
+		
+		if(ff==true){
+			openPopup();
+		}
+	});
+}
+
+function openPopup(){
+	window.open('/map-popup', '팝업창', 'left=200,top=200,width=600,height=600,scrollbars=yes,resizable=yes');
 }
 
 //마커생성(경도, 위도, 이름(마커구분))
