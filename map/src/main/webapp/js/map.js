@@ -43,4 +43,78 @@ function init() {
 		overlays: [mapOverlay], //오버레이
 		view: mapView
 	});
+
+	//마우스 올렸을때
+	map.on('pointermove', function(evt) {
+		var coordinate = evt.coordinate; //마우스가 올려진 좌표값
+
+		map.getTargetElement().style.cursor = map.hasFeatureAtPixel(evt.pixel) ? 'pointer' : '';
+
+		//마우스를 다른 곳으로 옮길 때 스위치 역할
+		if (hover != null) {
+			hover = null;
+		}
+
+		//마우스가 올려진 곳의 마커를 가져와 hover에 저장
+		map.forEachFeatureAtPixel(evt.pixel, function(f) {
+			hover = f;
+			return true;
+		});
+
+		//마커가 있을 경우
+		if (hover) {
+			var content =
+				"<div class='__float-tbl'>"
+				+	hover.get('name')
+				+ "</div>";
+				
+			//popup-content 부분에 content를 넣어줌
+			content1.innerHTML = content;
+			
+			//오버레이이의 좌표를 정해줌
+			mapOverlay.setPosition(coordinate);
+		}else{
+        	content1.innerHTML = '';
+    	}
+	});
 }
+
+//마커생성(경도, 위도, 이름(마커구분))
+function addMarker(lon, lat, name){ //경도 위도 이름값(마커들을 구분하기위해)
+
+	// 마커 feature 설정
+	var feature = new ol.Feature({
+		geometry: new ol.geom.Point(ol.proj.fromLonLat([lon, lat])), //경도 위도에 포인트 설정
+		name: name
+	});
+
+	// 마커 스타일 설정
+	var markerStyle = new ol.style.Style({
+		image: new ol.style.Icon({ //마커 이미지
+			opacity: 1, //투명도 1=100% 
+			scale: 1.2, //크기 1=100%
+			src: 'http://map.vworld.kr/images/ol3/marker_blue.png'
+		}),
+		zindex: 10
+	});
+
+	// 마커 레이어에 들어갈 소스 생성
+	var markerSource = new ol.source.Vector({
+		features: [feature] //feature의 집합
+	});
+
+	// 마커 레이어 생성
+	var markerLayer = new ol.layer.Vector({
+		source: markerSource, //마커 feacture들
+		style: markerStyle //마커 스타일
+	});
+    
+	// 지도에 마커가 그려진 레이어 추가
+	map.addLayer(markerLayer);	
+
+}
+
+$(document).ready(function() {
+	init();
+	addMarker(126.9700, 37.3996, '오비즈타워');
+});
