@@ -6,21 +6,8 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type="text/css">
 	<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+	<link rel="stylesheet" href="/css/map.css" type="text/css">
 	<title>map</title>
-
-	<style>
-	.__float-tbl{
-		border: 1px solid #2a5dc5;
-		border-radius: 5px;
-		background-color: #2a5dc5;
-		font-size: 15px;
-		color: white;
-		text-align: center;
-		position: absolute;
-		top: 30px;
-		left: -50px;
-		width:130px;
-	</style>
 </head>
 <body>
 	<h2>OpenLayers_MAP</h2>
