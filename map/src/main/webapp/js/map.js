@@ -7,16 +7,29 @@ var mapOverlay; //맵 오버레이 선언 : 지도 위에 팝업 옵션을 사�
 var mapView; //맵 뷰 선언 : 보여지는 지도 부분 설정
 var hover = null; //마우스 이벤트에 사용될 변수
 
+var mapType = null;
+
+//레이어 변경
+function changeLayer(mtype){
+	
+	mapType = mtype;
+	
+	map.removeLayer(mapLayer);
+	map.addLayer(mapLayer);
+	
+}
+
 function init() {
-	//타일생성
-	mapLayer = new ol.layer.Tile(
-		{
+	
+	mapType = 'Base';
+	
+	mapLayer = new ol.layer.Tile({
 			title: 'vWorld Map',
 			visible: true,
-			type: 'base',
+			editable : true,
 			source: new ol.source.XYZ(
 				{
-					url: 'http://api.vworld.kr/req/wmts/1.0.0/310D88CA-D6B5-3A14-A4E8-35B0A763C243/Base/{z}/{y}/{x}.png' //Vworld Tile 변경
+					url: 'http://api.vworld.kr/req/wmts/1.0.0/310D88CA-D6B5-3A14-A4E8-35B0A763C243/'+ mapType + '/{z}/{y}/{x}.png' //Vworld Tile 변경
 				})
 		});
 
@@ -84,14 +97,9 @@ function init() {
 		
 		if(ff==true){
 			//openPopup();
-			var lon = evt.coordinate[0];
-			var lat = evt.coordinate[1];
-			console.log(lon);
-			console.log(lat);
-
-			move(lon, lat);
 		}
 	});
+
 }
 
 function openPopup(){

@@ -20,6 +20,14 @@
 		<div id="popup-content"></div>
 	</div>
 	</br>
+	<div>
+		<button class='mapTypeButton btn btn-primary' onClick='changeLayer("base")'>기본지도</button>
+		<button class='mapTypeButton btn btn-primary' onClick='changeLayer("gray")'>회색지도</button>
+		<button class='mapTypeButton btn btn-primary' onClick='changeLayer("midnight")'>야간지도</button>
+		<button class='mapTypeButton btn btn-primary' onClick='changeLayer("Hybrid")'>하이브리드지도</button>
+		<button class='mapTypeButton btn btn-primary' onClick='changeLayer("Hybrid")'>하이브리드지도</button>
+	</div>
+	</br>
 	<button id='obiz' onClick='move(126.9700, 37.3996)'>오비즈타워</button>
 </body>
 <script type="text/javascript" src="/js/map.js"></script>
