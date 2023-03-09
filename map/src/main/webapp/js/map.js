@@ -1,35 +1,62 @@
-//map.js
-var container = document.getElementById('popup'); //팝업이 담길 컨테이너 요소
-var content1 = document.getElementById('popup-content'); //팝업 내용 요소
+$(document).ready(function() {
+	init();
+	//addMarker(126.9700, 37.3996, '오비즈타워');
+});
 var map;
-var mapLayer; //맵 레이어 선언 : 지도 그림(타일) 설정
-var mapOverlay; //맵 오버레이 선언 : 지도 위에 팝업 옵션을 사용할 때
+//맵 레이어 선언 : 지도 그림(타일) 설정
+var baseMapLayer;
+var grayMapLayer;
+var midnightMapLayer;
+
 var mapView; //맵 뷰 선언 : 보여지는 지도 부분 설정
 var hover = null; //마우스 이벤트에 사용될 변수
 
-var mapType = null;
+var container = document.getElementById('popup'); //팝업이 담길 컨테이너 요소
+var content1 = document.getElementById('popup-content'); //팝업 내용 요소
+var mapOverlay; //맵 오버레이 선언 : 지도 위에 팝업 옵션을 사용할 때
+var markerLayer;
 
 //레이어 변경
-function changeLayer(mtype){
+function changeLayer(type){
 	
-	mapType = mtype;
+	map.removeLayer(baseMapLayer);
+	map.removeLayer(grayMapLayer);
+	map.removeLayer(midnightMapLayer);
+	map.removeLayer(markerLayer);
 	
-	map.removeLayer(mapLayer);
-	map.addLayer(mapLayer);
+	map.addLayer(type);
 	
 }
 
 function init() {
 	
-	mapType = 'Base';
-	
-	mapLayer = new ol.layer.Tile({
+	baseMapLayer = new ol.layer.Tile({
 			title: 'vWorld Map',
 			visible: true,
 			editable : true,
 			source: new ol.source.XYZ(
 				{
-					url: 'http://api.vworld.kr/req/wmts/1.0.0/310D88CA-D6B5-3A14-A4E8-35B0A763C243/'+ mapType + '/{z}/{y}/{x}.png' //Vworld Tile 변경
+					url: 'http://api.vworld.kr/req/wmts/1.0.0/310D88CA-D6B5-3A14-A4E8-35B0A763C243/'+ 'Base' + '/{z}/{y}/{x}.png' //Vworld Tile 변경
+				})
+		});
+		
+	grayMapLayer = new ol.layer.Tile({
+			title: 'vWorld Map',
+			visible: true,
+			editable : true,
+			source: new ol.source.XYZ(
+				{
+					url: 'http://api.vworld.kr/req/wmts/1.0.0/310D88CA-D6B5-3A14-A4E8-35B0A763C243/'+ 'gray' + '/{z}/{y}/{x}.png' //Vworld Tile 변경
+				})
+		});
+		
+	midnightMapLayer = new ol.layer.Tile({
+			title: 'vWorld Map',
+			visible: true,
+			editable : true,
+			source: new ol.source.XYZ(
+				{
+					url: 'http://api.vworld.kr/req/wmts/1.0.0/310D88CA-D6B5-3A14-A4E8-35B0A763C243/'+ 'midnight' + '/{z}/{y}/{x}.png' //Vworld Tile 변경
 				})
 		});
 
@@ -43,7 +70,6 @@ function init() {
 		center: new ol.geom.Point([128.5, 36.1]) //처음 중앙에 보여질 경도, 위도 
 			.transform('EPSG:4326', 'EPSG:3857') //GPS 좌표계 -> 구글 좌표계
 			.getCoordinates(), //포인트의 좌표를 리턴함
-		/* center : [14126669.41589247, 4493404.190498611], */
 		zoom: 7,
 		minZoom: 7,
 		maxZoom: 19
@@ -52,7 +78,7 @@ function init() {
 	//맵 생성
 	map = new ol.Map({
 		target: 'vMap', //html 요소 id
-		layers: [mapLayer],
+		layers: [baseMapLayer],
 		overlays: [mapOverlay], //오버레이
 		view: mapView
 	});
@@ -102,6 +128,7 @@ function init() {
 
 }
 
+//팝업생성
 function openPopup(){
 	window.open('/map-popup', '팝업창', 'left=200,top=200,width=600,height=600,scrollbars=yes,resizable=yes');
 }
@@ -131,7 +158,7 @@ function addMarker(lon, lat, name){ //경도 위도 이름값(마커들을 구�
 	});
 
 	// 마커 레이어 생성
-	var markerLayer = new ol.layer.Vector({
+	markerLayer = new ol.layer.Vector({
 		source: markerSource, //마커 feacture들
 		style: markerStyle //마커 스타일
 	});
@@ -141,11 +168,7 @@ function addMarker(lon, lat, name){ //경도 위도 이름값(마커들을 구�
 
 }
 
-$(document).ready(function() {
-	init();
-	addMarker(126.9700, 37.3996, '오비즈타워');
-});
-
+//이동
 function move(x, y){
 	map.getView().setCenter(
 		new ol.geom.Point([x, y]).transform('EPSG:4326', 'EPSG:3857').getCoordinates()
