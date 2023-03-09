@@ -23,9 +23,11 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0'
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"	//jsp
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	//annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	implementation "com.h2database:h2"	//DB오류 임시
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	implementation "com.h2database:h2"
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// https://mvnrepository.com/artifact/org.postgresql/postgresql
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
 }
 
 tasks.named('test') {
