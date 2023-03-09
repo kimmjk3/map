@@ -1,14 +1,13 @@
-package com.study.mapper;
+package com.study.map.mapper;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.study.domain.mapDTO;
-
 @Mapper
 public interface mapMapper {
+    
+	List<String> selectGeoJsonLcbd100l();
 
-	
 
 }
