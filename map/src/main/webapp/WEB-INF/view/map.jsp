@@ -27,6 +27,7 @@
 				<button class='mapTypeButton btn btn-primary' onClick='changeLayer(baseMapLayer)'>기본지도</button>
 				<button class='mapTypeButton btn btn-primary' onClick='changeLayer(grayMapLayer)'>회색지도</button>
 				<button class='mapTypeButton btn btn-primary' onClick='changeLayer(midnightMapLayer)'>야간지도</button>
+				<button class='mapTypeButton btn btn-primary' onClick='changeLayer(testMapLayer)'>테스트지도</button>
 			</div>
 		</div>
 		<div style="width:50%;display:inline-block;margin-left:5%;">

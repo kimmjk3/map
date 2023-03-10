@@ -7,6 +7,7 @@ var map;
 var baseMapLayer;
 var grayMapLayer;
 var midnightMapLayer;
+var testMapLayer;
 
 var mapView; //맵 뷰 선언 : 보여지는 지도 부분 설정
 var hover = null; //마우스 이벤트에 사용될 변수
@@ -57,6 +58,16 @@ function init() {
 			source: new ol.source.XYZ(
 				{
 					url: 'http://api.vworld.kr/req/wmts/1.0.0/310D88CA-D6B5-3A14-A4E8-35B0A763C243/'+ 'midnight' + '/{z}/{y}/{x}.png' //Vworld Tile 변경
+				})
+		});
+		
+	testMapLayer = new ol.layer.Tile({
+			title: 'vWorld Map',
+			visible: true,
+			editable : true,
+			source: new ol.source.XYZ(
+				{
+					  url: 'http://192.168.0.35:8089/geoserver/gwc/service/wmts?layer=jh1128:lcbd100l&format=image/png&tilematrixset=GoogleMapsCompatible&tilematrix={z}&tilerow={y}&tilecol={x}&service=WMTS&version=1.0.0&request=GetTile', //Vworld Tile 변경
 				})
 		});
 
