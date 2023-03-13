@@ -23,7 +23,7 @@ function changeLayer(type){
 	map.removeLayer(baseMapLayer);
 	map.removeLayer(grayMapLayer);
 	map.removeLayer(midnightMapLayer);
-	map.removeLayer(markerLayer);
+	//map.removeLayer(markerLayer);
 	
 	map.addLayer(type);
 	
@@ -61,7 +61,7 @@ function init() {
 				})
 		});
 		
-	testMapLayer = new ol.layer.Tile({
+/*	testMapLayer = new ol.layer.Tile({
 			title: 'vWorld Map',
 			visible: true,
 			editable : true,
@@ -69,7 +69,26 @@ function init() {
 				{
 					  url: 'http://192.168.0.35:8089/geoserver/gwc/service/wmts?layer=jh1128:lcbd100l&format=image/png&tilematrixset=GoogleMapsCompatible&tilematrix={z}&tilerow={y}&tilecol={x}&service=WMTS&version=1.0.0&request=GetTile', //Vworld Tile 변경
 				})
-		});
+		});*/
+		
+	testMapLayer = new ol.layer.Tile({
+		title: 'vWorld Map',
+		visible: true,
+		editable : true,
+		zIndex : 100, 
+		source : new ol.source.TileWMS({
+			//http://192.168.0.35:8089/geoserver/jh1128/wms?service=WMS&version=1.1.0&request=GetMap&layers=jh1128%3Ansid_alc.lcbd100l&bbox=124.60970878412438%2C33.11371207231238%2C131.8727662142157%2C38.613709309773355&width=768&height=581&srs=EPSG%3A4326&styles=&format=application/openlayers
+			url : 'http://192.168.0.35:8089/geoserver/jh1128/wms', // 1. 레이어 URL
+			params : {
+				'VERSION' : '1.1.0', // 2. 버전
+				'LAYERS' : 'jh1128:nsid_alc.lcbd100l', // 3. 작업공간:레이어 명
+				//'BBOX' : [124.60970878412438, 33.11371207231238, 131.8727662142157, 38.613709309773355], 
+				'SRS' : 'EPSG:4326', // SRID
+				'FORMAT' : 'image/png' // 포맷
+			},
+			serverType : 'geoserver',
+		})
+	});
 
 	mapOverlay = new ol.Overlay(({
 		element: container
@@ -160,7 +179,7 @@ function addMarker(lon, lat, name){ //경도 위도 이름값(마커들을 구�
 			scale: 1.2, //크기 1=100%
 			src: 'http://map.vworld.kr/images/ol3/marker_blue.png'
 		}),
-		zindex: 10
+		zindex: 101
 	});
 
 	// 마커 레이어에 들어갈 소스 생성
