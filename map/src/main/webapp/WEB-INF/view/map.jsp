@@ -34,7 +34,7 @@
 			<div>
 				<button class='mapTypeButton btn btn-dark' onClick='addLcbd100lLayer()'>행정구역경계</button>
 				<button class='mapTypeButton btn btn-dark' onClick='addLcbd110lLayer()'>읍면동경계</button>
-				<button class='mapTypeButton btn btn-dark'>#</button>
+				<button class='mapTypeButton btn btn-dark' onClick='addLcld170lLayer()'>연속지적도</button>
 			</div>
 		</div>
 	</div>

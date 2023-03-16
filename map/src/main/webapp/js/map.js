@@ -111,6 +111,36 @@ lcbd110lMapLayer = new ol.layer.Tile({
 	})
 });
 
+//연속지적도 레이어 생성
+var lcld170lMapLayer;
+var c = 0;
+function addLcld170lLayer() {
+
+	if (c == 0) {
+		map.addLayer(lcld170lMapLayer);
+		c = 1;
+	} else if (c == 1) {
+		map.removeLayer(lcld170lMapLayer);
+		c = 0;
+	}
+}
+lcld170lMapLayer = new ol.layer.Tile({
+	title: 'lcld170l',
+	visible: true,
+	editable: true,
+	zIndex: 100,
+	source: new ol.source.TileWMS({
+		url: 'http://192.168.0.35:8081/geoserver/jhit/wms', // 1. 레이어 URL
+		params: {
+			'VERSION': '1.1.0', // 2. 버전
+			'LAYERS': 'jhit:lcld170l', // 3. 작업공간:레이어 명
+			'SRS': 'EPSG:5179', // SRID
+			'FORMAT': 'image/png' // 포맷
+		},
+		serverType: 'geoserver',
+	})
+});
+
 function init() {
     //뷰 생성
     mapView = new ol.View({
@@ -118,8 +148,8 @@ function init() {
         center: new ol.geom.Point([128.5, 36.1]) //처음 중앙에 보여질 경도, 위도 
             .transform('EPSG:4326', 'EPSG:5179') //4326 -> 5179
             .getCoordinates(), //포인트의 좌표를 리턴함
-        zoom: 7,
-        minZoom: 7,
+        zoom: 8,
+        minZoom: 8,
         maxZoom: 19
     });
 
