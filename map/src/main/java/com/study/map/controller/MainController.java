@@ -17,7 +17,7 @@ public class MainController {
     @GetMapping("/")
     public String index() {
     	
-        List<String> lcbd100lList = mapService.getGeoJsonLcbd100l();
+        //List<String> lcbd100lList = mapService.getGeoJsonLcbd100l();
         //model.addAttribute("boardList", boardList);
     	
         return "/index";

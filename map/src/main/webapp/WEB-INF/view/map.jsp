@@ -2,61 +2,44 @@
 <!doctype html>
 <html lang="ko">
 <head>
+	<title>map</title>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type="text/css">
-	<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+
 	<link rel="stylesheet" href="/css/map.css" type="text/css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.0/proj4.js"></script>
 	<!-- 부트스트랩 -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
-	<title>map</title>
+	<script type="text/javascript" src="//map.ngii.go.kr/openapi/wmts_ngiiMap_v6.4.3.js?apikey=E353A04D7CBCD533A375EF9471DAE403"></script>
+	
 </head>
 <body>
 	<h2>OpenLayers_MAP</h2>
-	<div id="vMap"></div>
-	
-	<!-- 지도 위에 팝업이 나타날 부분 -->
-	<div id="popup">
-		<div id="popup-content"></div>
-	</div>
+	<div id="vMap"></div>	
 	</br>
 	<div style="width:100%;display:flex;">
 		<div style="width:50%;display:inline-block;margin-left:5%;">
-			<div>레이어 변경</div>
+			<div>배경변경</div>
 			<div>
-				<button class='mapTypeButton btn btn-primary' onClick='changeLayer(baseMapLayer)'>기본지도</button>
-				<button class='mapTypeButton btn btn-primary' onClick='changeLayer(grayMapLayer)'>회색지도</button>
-				<button class='mapTypeButton btn btn-primary' onClick='changeLayer(midnightMapLayer)'>야간지도</button>
-				<button class='mapTypeButton btn btn-primary' onClick='changeLayer(testMapLayer)'>행정구역경계</button>
+				<button class='mapTypeButton btn btn-dark' onClick='changeLayer(baseMapLayer)'>기본지도</button>
+				<button class='mapTypeButton btn btn-dark' onClick='changeLayer(grayMapLayer)'>회색지도</button>
+				<button class='mapTypeButton btn btn-dark' onClick='changeLayer(midnightMapLayer)'>야간지도</button>
+				<button class='mapTypeButton btn btn-dark' onClick='changeLayer(satelliteMapLayer)'>항공지도</button>
 			</div>
 		</div>
 		<div style="width:50%;display:inline-block;margin-left:5%;">
-			<div>마커생성</div>
+			<div>레이어(ON/OFF)</div>
 			<div>
-				<button class='mapTypeButton btn btn-primary' onClick='addMarker(126.9700, 37.3996, "오비즈타워")'>오비즈타워</button>
-				<button class='mapTypeButton btn btn-primary'>#</button>
-				<button class='mapTypeButton btn btn-primary'>#</button>
+				<button class='mapTypeButton btn btn-dark' onClick='addLcbd100lLayer()'>행정구역경계</button>
+				<button class='mapTypeButton btn btn-dark' onClick='addLcbd110lLayer()'>읍면동경계</button>
+				<button class='mapTypeButton btn btn-dark'>#</button>
 			</div>
 		</div>
 	</div>
-	</br>
-	<div style="width:100%;display:flex;">
-		<div style="width:50%;display:inline-block;margin-left:5%;">
-			<div>이동</div>
-			<div>
-				<button class='mapTypeButton btn btn-primary' onClick='move(126.9700, 37.3996)'>오비즈타워</button>
-				<button class='mapTypeButton btn btn-primary'>#</button>
-				<button class='mapTypeButton btn btn-primary'>#</button>
-			</div>
-		</div>
-		<div style="width:50%;display:inline-block;margin-left:5%;">
-			<div>#</div>
-			<div>
-
-			</div>
-		</div>
-	</div>
-	</br>
 </body>
 <script type="text/javascript" src="/js/map.js"></script>
+<script>
+</script>
 </html>
