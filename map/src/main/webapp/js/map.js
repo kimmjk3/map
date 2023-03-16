@@ -59,8 +59,12 @@ function addLcbd100lLayer() {
 	if (a == 0) {
 		map.addLayer(lcbd100lMapLayer);
 		a = 1;
+		document.getElementById("a").style.backgroundColor = "#ADFF2F";
+		document.getElementById("a").style.color = "#000000";
 	} else if (a == 1) {
 		map.removeLayer(lcbd100lMapLayer);
+		document.getElementById("a").style.backgroundColor = "";
+		document.getElementById("a").style.color = "";
 		a = 0;
 	}
 }
@@ -89,9 +93,13 @@ function addLcbd110lLayer() {
 	if (b == 0) {
 		map.addLayer(lcbd110lMapLayer);
 		b = 1;
+		document.getElementById("b").style.backgroundColor = "#ADFF2F";
+		document.getElementById("b").style.color = "#000000";
 	} else if (b == 1) {
 		map.removeLayer(lcbd110lMapLayer);
 		b = 0;
+		document.getElementById("b").style.backgroundColor = "";
+		document.getElementById("b").style.color = "";
 	}
 }
 lcbd110lMapLayer = new ol.layer.Tile({
@@ -119,9 +127,13 @@ function addLcld170lLayer() {
 	if (c == 0) {
 		map.addLayer(lcld170lMapLayer);
 		c = 1;
+		document.getElementById("c").style.backgroundColor = "#ADFF2F";
+		document.getElementById("c").style.color = "#000000";
 	} else if (c == 1) {
 		map.removeLayer(lcld170lMapLayer);
 		c = 0;
+		document.getElementById("c").style.backgroundColor = "";
+		document.getElementById("c").style.color = "";
 	}
 }
 lcld170lMapLayer = new ol.layer.Tile({

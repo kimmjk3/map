@@ -32,9 +32,9 @@
 		<div style="width:50%;display:inline-block;margin-left:5%;">
 			<div>레이어(ON/OFF)</div>
 			<div>
-				<button class='mapTypeButton btn btn-dark' onClick='addLcbd100lLayer()'>행정구역경계</button>
-				<button class='mapTypeButton btn btn-dark' onClick='addLcbd110lLayer()'>읍면동경계</button>
-				<button class='mapTypeButton btn btn-dark' onClick='addLcld170lLayer()'>연속지적도</button>
+				<button id = 'a' class='mapTypeButton btn btn-dark' onClick='addLcbd100lLayer()'>행정구역경계</button>
+				<button id = 'b' class='mapTypeButton btn btn-dark' onClick='addLcbd110lLayer()'>읍면동경계</button>
+				<button id = 'c' class='mapTypeButton btn btn-dark' onClick='addLcld170lLayer()'>연속지적도</button>
 			</div>
 		</div>
 	</div>
